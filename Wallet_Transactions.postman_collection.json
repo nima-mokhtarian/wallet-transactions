@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "1f06f06a-964c-4509-8591-1910c50ce9fa",
+		"name": "Wallet Transactions – EVM / Bitcoin / Solana",
+		"description": "Fetch all transactions for a wallet across common chains using Postman.\n\nSet environment variables before running:\n\nEVM / Etherscan-compatible:\n- etherscan_base (e.g. https://api.etherscan.io/api, https://api.bscscan.com/api, https://api.polygonscan.com/api)\n- api_key (your explorer API key)\n- address (wallet address, 0x...)\n- block_start (default 0)\n- block_end (default 99999999)\n- page (default 1)\n- offset (default 10000)\n\nBitcoin / Blockstream:\n- blockstream_base (e.g. https://blockstream.info/api)\n- btc_address\n\nSolana:\n- solana_rpc (e.g. https://api.mainnet-beta.solana.com)\n- sol_address\n- sol_limit (e.g. 1000)\n- sol_before (optional; signature string)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34129784",
+		"_collection_link": "https://abank-backend-b.postman.co/workspace/ea8e1869-5f7e-4d43-8007-57552523ed45/collection/34129784-1f06f06a-964c-4509-8591-1910c50ce9fa?action=share&source=collection_link&creator=34129784"
+	},
+	"item": [
+		{
+			"name": "EVM (Etherscan-compatible)",
+			"item": [
+				{
+					"name": "Normal Transactions (txlist)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{etherscan_base}}?module=account&action=txlist&address={{address}}&startblock={{block_start}}&endblock={{block_end}}&page={{page}}&offset={{offset}}&sort=asc&apikey={{api_key}}",
+							"host": [
+								"{{etherscan_base}}"
+							],
+							"query": [
+								{
+									"key": "module",
+									"value": "account"
+								},
+								{
+									"key": "action",
+									"value": "txlist"
+								},
+								{
+									"key": "address",
+									"value": "{{address}}"
+								},
+								{
+									"key": "startblock",
+									"value": "{{block_start}}"
+								},
+								{
+									"key": "endblock",
+									"value": "{{block_end}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								},
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						},
+						"description": "Normal Transactions (txlist) via Etherscan-style API. Change {etherscan_base} per chain."
+					},
+					"response": []
+				},
+				{
+					"name": "Internal Transactions (txlistinternal)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{etherscan_base}}?module=account&action=txlistinternal&address={{address}}&startblock={{block_start}}&endblock={{block_end}}&page={{page}}&offset={{offset}}&sort=asc&apikey={{api_key}}",
+							"host": [
+								"{{etherscan_base}}"
+							],
+							"query": [
+								{
+									"key": "module",
+									"value": "account"
+								},
+								{
+									"key": "action",
+									"value": "txlistinternal"
+								},
+								{
+									"key": "address",
+									"value": "{{address}}"
+								},
+								{
+									"key": "startblock",
+									"value": "{{block_start}}"
+								},
+								{
+									"key": "endblock",
+									"value": "{{block_end}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								},
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						},
+						"description": "Internal Transactions (txlistinternal) via Etherscan-style API. Change {etherscan_base} per chain."
+					},
+					"response": []
+				},
+				{
+					"name": "ERC-20 Transfers (tokentx)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{etherscan_base}}?module=account&action=tokentx&address={{address}}&startblock={{block_start}}&endblock={{block_end}}&page={{page}}&offset={{offset}}&sort=asc&apikey={{api_key}}",
+							"host": [
+								"{{etherscan_base}}"
+							],
+							"query": [
+								{
+									"key": "module",
+									"value": "account"
+								},
+								{
+									"key": "action",
+									"value": "tokentx"
+								},
+								{
+									"key": "address",
+									"value": "{{address}}"
+								},
+								{
+									"key": "startblock",
+									"value": "{{block_start}}"
+								},
+								{
+									"key": "endblock",
+									"value": "{{block_end}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								},
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						},
+						"description": "ERC-20 Transfers (tokentx) via Etherscan-style API. Change {etherscan_base} per chain."
+					},
+					"response": []
+				},
+				{
+					"name": "NFT Transfers (tokennfttx)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{etherscan_base}}?module=account&action=tokennfttx&address={{address}}&startblock={{block_start}}&endblock={{block_end}}&page={{page}}&offset={{offset}}&sort=asc&apikey={{api_key}}",
+							"host": [
+								"{{etherscan_base}}"
+							],
+							"query": [
+								{
+									"key": "module",
+									"value": "account"
+								},
+								{
+									"key": "action",
+									"value": "tokennfttx"
+								},
+								{
+									"key": "address",
+									"value": "{{address}}"
+								},
+								{
+									"key": "startblock",
+									"value": "{{block_start}}"
+								},
+								{
+									"key": "endblock",
+									"value": "{{block_end}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								},
+								{
+									"key": "apikey",
+									"value": "{{api_key}}"
+								}
+							]
+						},
+						"description": "NFT Transfers (tokennfttx) via Etherscan-style API. Change {etherscan_base} per chain."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bitcoin (Blockstream Electrs API)",
+			"item": [
+				{
+					"name": "Address Transactions (first page)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{blockstream_base}}/address/{{btc_address}}/txs",
+							"host": [
+								"{{blockstream_base}}"
+							],
+							"path": [
+								"address",
+								"{{btc_address}}",
+								"txs"
+							]
+						},
+						"description": "Gets newest transactions for the address. Use the 'Address Transactions – next page' request for pagination."
+					},
+					"response": []
+				},
+				{
+					"name": "Address Transactions – next page (use last txid)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{blockstream_base}}/address/{{btc_address}}/txs/chain/:last_txid",
+							"host": [
+								"{{blockstream_base}}"
+							],
+							"path": [
+								"address",
+								"{{btc_address}}",
+								"txs",
+								"chain",
+								":last_txid"
+							],
+							"query": [
+								{
+									"key": "last_txid",
+									"value": "8698be0e3353cc2196cf3f7b2116d7964863f412a7bb1ad60b43c7087abb74a1",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "last_txid",
+									"value": "8698be0e3353cc2196cf3f7b2116d7964863f412a7bb1ad60b43c7087abb74a1"
+								}
+							]
+						},
+						"description": "For pagination: set {{last_txid}} to the last txid from previous response."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction Details by txid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{blockstream_base}}/tx/:txid",
+							"host": [
+								"{{blockstream_base}}"
+							],
+							"path": [
+								"tx",
+								":txid"
+							],
+							"variable": [
+								{
+									"key": "txid",
+									"value": "8698be0e3353cc2196cf3f7b2116d7964863f412a7bb1ad60b43c7087abb74a1"
+								}
+							]
+						},
+						"description": "Fetch full details for a transaction id."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Solana (JSON-RPC)",
+			"item": [
+				{
+					"name": "getSignaturesForAddress (paged)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"getSignaturesForAddress\",\n  \"params\": [\n    \"{{sol_address}}\",\n    {\n      \"limit\": \"{{sol_limit}}\",\n      \"before\": \"{{sol_before}}\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{solana_rpc}}",
+							"host": [
+								"{{solana_rpc}}"
+							]
+						},
+						"description": "Returns confirmed signatures for transactions involving the given address. For pagination, set {{sol_before}} to the last signature from the previous page."
+					},
+					"response": []
+				},
+				{
+					"name": "getTransaction (details)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"getTransaction\",\n  \"params\": [\n    \"{{signature}}\",\n    {\n      \"encoding\": \"json\",\n      \"maxSupportedTransactionVersion\": 0\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{solana_rpc}}",
+							"host": [
+								"{{solana_rpc}}"
+							]
+						},
+						"description": "Fetch full transaction by signature returned from getSignaturesForAddress."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
