@@ -1,8 +1,33 @@
 # Wallet Transactions Postman Kit
 
+[![Postman v2.1](https://img.shields.io/badge/Postman-collection%20v2.1-FF6C37)](https://www.postman.com/)
+![Requests](https://img.shields.io/badge/requests-9-0A66C2)
+![Chains](https://img.shields.io/badge/chains-EVM%20%7C%20Bitcoin%20%7C%20Solana-6f42c1)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A Postman collection for pulling wallet transaction history across three
 common chain families — EVM (Etherscan-compatible explorers), Bitcoin
 (Blockstream Esplora), and Solana (JSON-RPC) — from a single kit.
+
+## At a Glance
+
+| Item | Included |
+|---|---|
+| Configured requests | 9 |
+| Chain families | EVM, Bitcoin, Solana |
+| Providers | Etherscan-compatible explorers, Blockstream Esplora, Solana JSON-RPC |
+| Authentication | Explorer API key for EVM; public endpoints for Bitcoin and Solana |
+| Use case | Address history and transaction-detail exploration |
+
+```mermaid
+flowchart LR
+    P["Wallet Transactions environment"] --> E["EVM explorer"]
+    P --> B["Blockstream Esplora"]
+    P --> S["Solana JSON-RPC"]
+    E --> O["Normalized exploration in Postman"]
+    B --> O
+    S --> O
+```
 
 ## Table of Contents
 - [Overview](#overview)
@@ -64,6 +89,15 @@ transactions for the address.
 Set `solana_rpc`, `sol_address`, `sol_limit` (default `1000`), and
 optionally `sol_before` (a signature string, for pagination) or `signature`
 (to fetch one specific transaction via `getTransaction`).
+
+## Project Status
+
+The collection and environment JSON validate successfully. This kit is a
+cross-chain exploration aid, not a normalized indexer: response formats,
+pagination, archival history, and provider limits remain chain-specific.
+
+This repository is part of the
+[Crypto API Postman toolkit](https://github.com/nima-mokhtarian?tab=repositories).
 
 ## Contributing
 1. Fork the repository.
